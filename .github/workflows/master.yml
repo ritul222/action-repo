@@ -1,0 +1,17 @@
+name: Send Webhook Event
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge:
+
+jobs:
+  send-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Webhook
+        uses: wei/send-webhook-action@v1
+        with:
+          url: <YOUR_WEBHOOK_ENDPOINT>
+          event: ${{ github.event_name }}
